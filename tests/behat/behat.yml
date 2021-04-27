@@ -1,0 +1,34 @@
+default:
+  suites:
+    default:
+      paths:
+        - "%paths.base%/features"
+  extensions:
+    SensioLabs\Behat\PageObjectExtension: ~
+    Behat\MinkExtension:
+      base_url: ${project.local.uri}
+    Drupal\MinkExtension:
+      base_url: ${project.local.uri}
+      default_session: goutte
+      browser_name: chrome
+      javascript_session: default
+      goutte: ~
+      files_path: "%paths.base%/media"
+    Drupal\DrupalExtension:
+      selectors:
+        message_selector: '.messages'
+        error_message_selector: '.messages.messages--error'
+        success_message_selector: '.messages.messages--status'
+      blackbox: ~
+      region_map:
+        footer: ".site-footer"
+        field body: "#edit-body-wrapper"
+      api_driver: "drupal"
+    jarnaiz\JUnitFormatter\JUnitFormatterExtension:
+        filename: report.xml
+        outputDir: "%paths.base%/build/tests"
+    Bex\Behat\ScreenshotExtension:
+      screenshot_taking_mode: failed_steps
+      image_drivers:
+        local:
+          screenshot_directory: ./tmp

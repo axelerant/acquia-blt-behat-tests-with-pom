@@ -1,0 +1,6 @@
+local:
+    root: /var/www/acquia-blt-test-site/docroot
+    uri: 'http://local.acquia-blt-test-site.com'
+    host: local.acquia-blt-test-site.com
+    user: vagrant
+    ssh: { options: '-o StrictHostKeyChecking=no -o PasswordAuthentication=no -i $HOME/.vagrant.d/insecure_private_key' }
